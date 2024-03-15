@@ -20,8 +20,8 @@ function SingleTask({task}:{task: TaskI}) {
     setTasks(prev=>prev.filter(task=>task.id != id))
   }
 
-  const total = task.subtasks.length
-  const completed = task.subtasks.filter(c=>c.completed).length
+  // const total = task.subtasks.length
+  // const completed = task.subtasks.filter(c=>c.completed).length
   
   return (
     <div className='task'>
