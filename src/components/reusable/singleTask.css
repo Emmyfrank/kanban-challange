@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.task {
+    border-radius: 10px;
+    background: rgb(56, 40, 40);
+    padding:10px;
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.task h4 {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.delete {
+    position: absolute;
+    top: 5px;
+    right:5px;
+    padding: 5px 10px;
+    background: rgb(72, 132, 94);
+    border-radius: 15px;
+    color: white !important;
+    font-weight: bolder;
+}
+
+.task p {
+    color: gray;
+}

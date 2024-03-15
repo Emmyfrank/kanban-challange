@@ -1,0 +1,82 @@
+
+
+.add  {
+    max-width: 460px;
+    background: #333333;
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
+}
+.add label{
+    color: whitesmoke;
+}
+
+.field {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+
+}
+
+
+.field input {
+    max-width: 100%;
+    width: 95%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.field textarea {
+    max-width: 100%;
+    width: 99%;
+    min-width: 95%;
+    max-height: 250px;
+    min-height: 150px;
+
+}
+
+.btn1 {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #635c63;
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+.sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(38, 107, 99);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.sub button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width:780px){
+    .add {
+        width:80%
+    }
+
+    .field input {
+        width: 94%;
+    }
+}

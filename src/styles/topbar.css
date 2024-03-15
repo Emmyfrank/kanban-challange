@@ -1,0 +1,40 @@
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgb(17, 14, 21);
+    /* width: 100% */
+}
+
+.header {
+    color: white;
+}
+
+.btn {
+    padding: 5px 13px;
+    border-radius: 10px;
+    background: blue;
+    color: white;
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    display: none;
+}
+
+.burger span {
+    width: 30px;
+    height: 3px;
+    border-radius: 5px;
+    background: white;
+}
+
+
+@media only screen and (max-width:780px){
+    .burger {
+        display: flex;
+    }
+}
