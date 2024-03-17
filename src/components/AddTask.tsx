@@ -1,6 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import "../styles/addtask.css"
 import { TaskI, appContext } from "../context/Provider"
+import { BoardContext } from "../context/BoardContextProvider"
 
 interface SubTaskI {
     name:string,
@@ -11,20 +12,45 @@ interface SubTaskI {
 const AddTask = () => {
 
     const {setTasks,setIsVisible} = useContext(appContext)
+    const {selectedBoard} = useContext(BoardContext)
+
+
 
 
     const [title,setTitle] = useState<string>("")
     const [description,setDescription] = useState<string>("")
-    const [status,setStatus] = useState<"todo" | "inprogress" |"done">("todo")
+    const [status,setStatus] = useState("")
     const [sub,setSub] = useState<string>("")
     const [subtasks,setSubtasks] = useState<SubTaskI[]>([])
 
+    //erros states
+    const [setIsSubError] = useState(false)
+    const [setIsTitleError] = useState(false)
+    const [setIsDescError] = useState(false)
+
+
+    const addTaskRef = useRef()
+
 
     const addTask =()=>{
-        if(!title || !description || !status || subtasks.length<0){
-            alert(status)
-            alert("sory")
-        } else {
+
+        // if(!title){
+        //     setIsTitleError?(true)
+        //     setTimeout(() => {
+        //         setIsTitleError(false)
+        //     }, 2000);
+        // } else if(!description){
+        //     setIsDescError(true)
+        //     setTimeout(() => {
+        //         setIsDescError(false)
+        //     }, 2000);
+        // } else if(subtasks.length <0 ){
+        //     setIsSubError(true)
+
+        //     setTimeout(() => {
+        //         setIsSubError(false)
+        //     }, 2000);
+        // } else {
             const newTask : TaskI ={
                 title :title,
                 description:description,
@@ -32,19 +58,24 @@ const AddTask = () => {
                 subtasks:subtasks,
                 id:Date.now()
             }
-
+    
             setTasks(prev=>[...prev,newTask])
+            selectedBoard?.tasks.push(newTask)
             setIsVisible(false)
+        // }
 
-            console.log(newTask)
-        }
+        
     }
 
     const addSubTask =()=>{
 
-        if(!sub){
-            alert("no sub task added")
-        } else {
+        // if(!sub){
+        //     setIsSubError(true)
+
+        //     setTimeout(() => {
+        //         setIsSubError(false)
+        //     }, 2000);
+        // } else {
             setSubtasks(prev=>[...prev,{
                 name:sub,
                 id: Date.now(),
@@ -53,49 +84,86 @@ const AddTask = () => {
       
             setSub('')
         }    
-    }
+    // }
 
     const deleteSubTask = (id : number)=>{
         setSubtasks(prev=>prev.filter(task=>task.id != id))
     }
 
 
+    useEffect(() => {
+        function handleClickOutside(event:any) {
+            if (addTaskRef.current && !addTaskRef.current.contains(event.target)) {
+                setIsVisible(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [setIsVisible]);
+
+
     
 
   return (
-    <div className='add'>
+    <div id="dialog" className="dialogs">
+     <div className='add' ref={addTaskRef}>
+        <h3 style={{
+            fontWeight:"bold",
+            marginBottom:"20px"
+        }}>Add new Task</h3>
         <div className="field">
-            <label>Task Title</label>
+            <div className="nono">Task Title</div>
             <input placeholder='Task Title' value={title} onChange={e=>setTitle(e.target.value)}/>
         </div>
 
         <div className="field">
-            <label>Task Description</label>
+            <div className="nono">Task Description</div>
             <textarea placeholder='Task Description' value={description} onChange={e=>setDescription(e.target.value)}></textarea>
         </div>
 
         <div className="field">
-            <label>SubTasks</label>
+            <div className="nono">SubTasks</div>
             {subtasks.length>0 && subtasks.map((sub)=>{
-            const desc = sub.name.length > 40 ?`${sub.name.substring(0,40)}...`: sub.name
-            
-            return (<div key={sub.id} className="sub">
-                <p>{desc}</p>
-                <button onClick={()=>deleteSubTask(sub.id)}>X</button>
-            </div>)}
-            )}
+                const desc = sub.name.length > 20 ?`${sub.name.substring(0,25)}...`: sub.name
+                
+                return (
+                    <div key={sub.id} 
+                    style={{
+                        display:"flex",
+                        alignItems:"center"
+                    }}
+                        
+                
+                    >
+                        <p     
+                        style={{
+                            flex:1,
+                            border:"1px",
+                            borderRadius:"5px",
+                            padding:"3px"
+                        }}
+                          
+                        >{desc}</p>
+                        <img src="/icon-cross.svg" onClick={()=>deleteSubTask(sub.id)}/>
+                    </div>
+                )}
+                )}
             <input placeholder='Task Subtask' value={sub} onChange={e=>setSub(e.target.value)}/>
-            <button className='btn1' onClick={addSubTask}>Add subtask</button>
+            <button className='btn1 btn2' onClick={addSubTask}>Add subtask</button>
         </div>
 
         <div className="field">
 
             <label>Status</label>
             
-                <select  onChange={e=>setStatus(e.target.value as "todo" | "inprogress" | "done")}>
-                    <option value={"todo"}>TODO</option>
+                <select  onChange={e=>setStatus(e.target.value as any)}>
+                    {/* <option value={"todo"}>TODO</option>
                     <option value={"inprogress"}>IN PROGRESS</option>
-                    <option value={"done"}>DONE</option>
+                    <option value={"done"}>DONE</option> */}
+
+                    {selectedBoard?.status.map(t=><option value={t.name}>{t.name.toUpperCase()}</option>)}
                 </select>
 
         </div>
@@ -105,6 +173,8 @@ const AddTask = () => {
                 Create New Task
             </button>
         </div>
+    </div> 
+
     </div>
   )
 }

@@ -1,0 +1,62 @@
+/* 
+.view {
+    
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    max-width: 480px;
+    width: 100%;
+    
+
+}
+
+.overlay {
+    min-height: 100vh;
+    min-width: 100vw;
+
+    background: rgba(137, 137, 137, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.view p {
+    color: gray;
+}
+
+.subtask {
+    padding: 10px 5px;
+    background: #f4f7fd;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.select option {
+    padding: 5px;
+}
+
+.stat {
+    color: gray;
+}
+
+@media only screen and (max-width:480px){
+    .view {
+        width: 80%;
+        top: 20%;
+
+    }
+} */

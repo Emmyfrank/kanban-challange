@@ -1,8 +1,42 @@
+.dialogs {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+.field label {
+    font-weight: bold !important;
+    color: black;
+}
+
+.nono {
+    /* font-weight: bold; */
+    color: gray;
+}
+
+textarea {
+    border-radius: 5px;
+    padding: 1px;
+    /* width: calc(100% - 20px); */
+}
+
+select {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
 
 
 .add  {
     max-width: 460px;
-    background: #333333;
+    background: white;
     position: fixed;
     width: 100%;
     padding: 20px;
@@ -47,11 +81,16 @@
 
 .btn1 {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     border: none;
-    background: #635c63;
+    background: #A8A4FF;
     color: whitesmoke;
     text-transform: uppercase;
+}
+
+.btn2 {
+    
+    background: rgba(99, 95, 199, 0.3)
 }
 
 .sub {
@@ -80,3 +119,10 @@
         width: 94%;
     }
 }
+
+
+
+
+
+
+/* //////////// */

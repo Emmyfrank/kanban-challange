@@ -1,0 +1,117 @@
+/* .new {
+    background: blue;
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.col:hover{
+    background: #e4ebfa;
+} */
+
+
+
+
+
+
+
+
+.dialogs {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.dialog-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%; /* Adjust as needed */
+}
+
+@media only screen and (max-width:780px){
+    .dialog-content {
+        width: 80%;
+    }
+}
+
+.stack {
+    margin-bottom: 10px;
+    margin-right: 20px;
+    
+}
+
+.stack2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dialog-content-text {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.text-field {
+    max-width: 100%;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-text {
+    white-space: nowrap;
+    color: red;
+    margin-bottom: 10px;
+}
+
+.columns {
+    margin-bottom: 10px;
+}
+
+.col-button, .new-button {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.col-button:hover, .new-button:hover {
+    background-color: #0056b3;
+}
+
+.new-button {
+    margin-top: 5px;
+    background: #635FC7;
+}
+
+.rr {
+    background: rgba(99, 95, 199, 0.4)
+;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+}

@@ -1,8 +1,11 @@
 .launch {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
     gap: 10px;
+    position: relative;
+    background: #e4ebfa;
+    height: 100vh;
+    overflow: scroll;
 }
 
 .todo,.inprogress,.done {
@@ -12,6 +15,7 @@
 
 .todo h3,.inprogress h3,.done h3 {
     position: relative;
+    margin-bottom: 10px;
 }
 
 .todo h3::after,.inprogress h3::after,.done h3::after {
@@ -41,6 +45,25 @@
 .todo {
     display: flex;
     flex-direction: column;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.empty button {
+    padding: 10px 20px;
+    background: blue;
+    border: none;
+    color: white;
+    border-radius: 25px;
 }
 
 @media only screen and (max-width:780px){
