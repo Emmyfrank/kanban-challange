@@ -14,11 +14,9 @@ export interface TaskI {
 
 function SingleTask({task}:{task: TaskI}) {
 
-  const {setTasks,setTaskVisible,setSelectedTask} = useContext(appContext)
+  const {setTaskVisible,setSelectedTask} = useContext(appContext)
 
-  const deletetask =(id:number)=>{
-    setTasks(prev=>prev.filter(task=>task.id != id))
-  }
+
 
   // const total = task.subtasks.length
   // const completed = task.subtasks.filter(c=>c.completed).length

@@ -32,7 +32,7 @@ const SmallSCreen = () => {
         <Stack flexDirection={"row"} 
             alignItems={"center"} 
             bgcolor={"#F4F7FD"}
-            p borderRadius={2}
+            borderRadius={2}
             justifyContent={"space-between"}
         >
             <LightMode/>

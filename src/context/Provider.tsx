@@ -21,7 +21,7 @@ export interface SubTaskI {
  export interface TaskI {
   title: string;
   description: string;
-  status: string;
+  status: any;
   subtasks: SubTaskI[];
   id:number
 }

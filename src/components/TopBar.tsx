@@ -35,7 +35,7 @@ const TopBar = () => {
   
   return (
     <>
-      <div className='topbar'>
+      {selectedBoard?.status && <div className='topbar'>
 
         <Stack flexDirection={"row"} alignContent={"center"}>
           <Stack display={"flex"} flexDirection={"row"} gap={1}>
@@ -72,13 +72,13 @@ const TopBar = () => {
             </Button>
           
               <Button disabled={selectedBoard?.status.length<1}>
-              <Add  fontSize='small' sx={{width:"40px",color:"white",borderRadius:"20px",height:"40px",bgcolor:"blue",display:{
+              <Add  fontSize='small' sx={{width:"40px",borderRadius:"20px",height:"40px",bgcolor:"blue",display:{
                 xs:"block",
                 xm:"none",
                 md:"none"
               },
-            background:"#635FC7",
-          color:"white"}}
+              background:"#635FC7",
+              color:"white"}}
               onClick={handleVisibility}
               />
               </Button>
@@ -86,7 +86,7 @@ const TopBar = () => {
               <MoreVert onClick={e=>showMenu(e)}/>
         
         </Stack>
-      </div>
+      </div>}
 
       {isVisible && <AddTask/>}
 

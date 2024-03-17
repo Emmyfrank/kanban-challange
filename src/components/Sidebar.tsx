@@ -11,11 +11,6 @@ const Sidebar = () => {
   const {boards,isCreating,setIsCreating,setSelectedBoard,selectedBoard} = useContext(BoardContext)
 
 
-  const handleShow=()=>{
-    const ele = document.getElementById("dialog") as HTMLElement
-    ele.style.display="block"
-    setIsCreating(false)
-  }
 
 
   return (

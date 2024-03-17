@@ -7,7 +7,7 @@
             const AddNewBoard = () => {
                 const [title, setTitle] = useState("");
                 const [text, setText] = useState('');
-                const [column, setColumn] = useState([]);
+                const [column, setColumn] = useState<{id:number,name:string}[]>([]);
     const [isTextError, setIsTextError] = useState(false);
     const [isTitleError, setIsTitleError] = useState(false);
     const { setIsCreating, addBoard, setIsSmallScreen } = useContext(BoardContext);
@@ -30,7 +30,7 @@
         }
     }
 
-    const deleteCol = (id) => {
+    const deleteCol = (id:number) => {
         setColumn(state => state.filter(c => c.id !== id));
     }
 
@@ -57,6 +57,7 @@
 
     useEffect(() => {
         function handleClickOutside(event:any) {
+            //@ts-ignore
             if (dialogRef.current && !dialogRef.current.contains(event.target)) {
                 setIsCreating(false);
             }

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import "../styles/addtask.css"
-import { TaskI, appContext } from "../context/Provider"
+import {  appContext } from "../context/Provider"
 import { BoardContext } from "../context/BoardContextProvider"
 
 interface SubTaskI {
@@ -19,17 +19,17 @@ const AddTask = () => {
 
     const [title,setTitle] = useState<string>("")
     const [description,setDescription] = useState<string>("")
-    const [status,setStatus] = useState("")
+    const [status,setStatus] = useState(selectedBoard?.status[0].name)
     const [sub,setSub] = useState<string>("")
     const [subtasks,setSubtasks] = useState<SubTaskI[]>([])
 
     //erros states
-    const [setIsSubError] = useState(false)
-    const [setIsTitleError] = useState(false)
-    const [setIsDescError] = useState(false)
+    // const [setIsSubError] = useState(false)
+    // const [setIsTitleError] = useState(false)
+    // const [setIsDescError] = useState(false)
 
 
-    const addTaskRef = useRef()
+    const addTaskRef = useRef<HTMLDivElement>(null);
 
 
     const addTask =()=>{
@@ -51,7 +51,7 @@ const AddTask = () => {
         //         setIsSubError(false)
         //     }, 2000);
         // } else {
-            const newTask : TaskI ={
+            const newTask ={
                 title :title,
                 description:description,
                 status:status,
@@ -93,7 +93,8 @@ const AddTask = () => {
 
     useEffect(() => {
         function handleClickOutside(event:any) {
-            if (addTaskRef.current && !addTaskRef.current.contains(event.target)) {
+            //@ts-ignore
+            if (addTaskRef.current && !addTaskRef.current?.contains(event.target)) {
                 setIsVisible(false);
             }
         }
@@ -108,6 +109,7 @@ const AddTask = () => {
 
   return (
     <div id="dialog" className="dialogs">
+        
      <div className='add' ref={addTaskRef}>
         <h3 style={{
             fontWeight:"bold",
@@ -158,7 +160,7 @@ const AddTask = () => {
 
             <label>Status</label>
             
-                <select  onChange={e=>setStatus(e.target.value as any)}>
+                <select value={status} onChange={e=>setStatus(e.target.value as any)}>
                     {/* <option value={"todo"}>TODO</option>
                     <option value={"inprogress"}>IN PROGRESS</option>
                     <option value={"done"}>DONE</option> */}
