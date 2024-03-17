@@ -9,11 +9,6 @@ const PlatformLaunch = () => {
 
   const {taskVisible,setIsVisible} = useContext<AppContextProps>(appContext)
   const {selectedBoard} = useContext(BoardContext)
-  const tasks = selectedBoard?.tasks
-
-  const todoTasks = tasks?.filter(task=>task.status==="todo")
-  const inprogresstasks =tasks?.filter(task=>task.status==='inprogress')
-  const donetasks = tasks?.filter(task=>task.status==='done')
 
 
   const allColumns = selectedBoard?.status
